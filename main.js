@@ -5,3 +5,11 @@ function openPDF() {
     // Open the PDF in a new tab
     window.open(pdfUrl, '_blank');
   }
+function myFunction() {
+    var x = document.getElementById("myNav");
+    if (x.className === "navbar") {
+        x.className += " responsive";
+    } else {
+        x.className = "navbar";
+    }
+}
