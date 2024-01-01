@@ -184,8 +184,11 @@ input[type=checkbox]:checked ~ label > img{
     display: block;
     text-align: center;
     color: #edf0f1;
+    font-family: 'Montserrat', sans-serif;
 }
-
+.container{
+    font-family: 'Montserrat', sans-serif;
+}
 .footer__links{
     
     position:relative;
@@ -199,6 +202,7 @@ input[type=checkbox]:checked ~ label > img{
 }
 .row{
     margin-top: 10px; 
+    font-family: 'Montserrat', sans-serif;
     
 }
 .row a{
@@ -210,14 +214,7 @@ input[type=checkbox]:checked ~ label > img{
     zoom: 110%;
     color: #0088a9;
 }
-.footer__links h3{
-    position: relative;
-    margin-top: 10px;
-    top: 50%;
-    left: 50%;
-    font-size: 1.2vw;
+.row h3{ 
     font-family: 'Montserrat', sans-serif;
-    color: #edf0f1;
-    background: none;
     
 }
