@@ -83,24 +83,24 @@ input[type=checkbox]:checked ~ label > img{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 1.2vw;
+    font-size: 2vw;
     font-family: 'Montserrat', sans-serif;
     color: #edf0f1;
     background: none;
 }
 .introduction p{
-    margin-top: 3vw;
+    margin-top: 6vw;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 1.2vw;
+    font-size: 1.6vw;
     font-family: 'Montserrat', sans-serif;
     color: #edf0f1;
     background: none;
 }
 .introduction button{
-    margin-top: 10vw;
+    margin-top: 14vw;
     width: 100px;
     height: 100px;
     font-weight: 500;
@@ -147,6 +147,7 @@ input[type=checkbox]:checked ~ label > img{
     height: 500px;
     margin-right: 40px;
 }
+
 .card__content{
     justify-content: center;
     border: 5px solid rgba(0, 136, 169, 1);
@@ -162,6 +163,9 @@ input[type=checkbox]:checked ~ label > img{
     width: 500px;
     align-items: center;
 }
+.card__content ul li{
+    list-style-type:dotted;
+}
 .card__content h2{
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
@@ -170,11 +174,26 @@ input[type=checkbox]:checked ~ label > img{
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
 }
+.card__title{
+    padding: 10px;
+    border-radius: 10px;
+}
+
+
+
 .card__content li{
     list-style-type: dot;
     background-color: #0088a9;
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
+}
+.reveal{
+    transform: translateY(150px);
+    transition: all 2s ease;
+}
+.reveal.active {
+    transform: translateY(0px);
+    opacity: 1;
 }
 
 .footer{ 
