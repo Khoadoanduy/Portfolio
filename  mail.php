@@ -35,7 +35,7 @@ echo'
 
     <script>
         setTimeout(function() {
-            window.location.href = "success.html";
+            window.location.href = "index.html";
         }, 5000); // 5 seconds
     </script>
 
