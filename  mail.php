@@ -7,7 +7,7 @@ $message = $_POST['message'];
 
 $mailheader = "From:".$name."<".$email.">\r\n";
 
-$recipient = "khoadoanduy@gmail.com";
+$recipient = "khoadoanduy05@gmail.com";
 
 mail($recipient, $subject, $message, $mailheader) or die("Error!");
 
@@ -39,6 +39,7 @@ echo'
 
 
 ';
-
+header("Location: success.html");
+exit;
 
 ?>
