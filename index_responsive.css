@@ -5,7 +5,7 @@
         text-align: center;
     }
     .introduction img{
-        width: 1512px;
+        width: 600px;
         height: 600px;
         opacity: 0.2;
         border-radius: 10px;
@@ -134,7 +134,8 @@
         font-weight: 500;
     }
     .reveal{
-        transform: translateY(150px);
+        margin-top: 5vh;
+        transform: translateY(200px);
         transition: all 2s ease;
     }
     .reveal.active {
