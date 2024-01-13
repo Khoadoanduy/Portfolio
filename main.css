@@ -103,9 +103,16 @@
     width: 500px;
     align-items: center;
 }
-.card__content ul li{
-    list-style-type:dotted;
+.card__content ul{
+    list-style-type:none;
 }
+.card__content ul li{
+    list-style-type:none;
+}
+.card__content li:before {
+    content: '\2022'; /* Unicode character for a bullet point */
+}
+
 .card__content h2{
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
