@@ -7,6 +7,7 @@
     background-color: #24252A;
 }
 .footer{ 
+    /* position:sticky; */
     justify-content: center;
     align-items: center;
     display: block;
