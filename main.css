@@ -2,11 +2,11 @@
 .introduction{
     position: relative;
     text-align: center;
-    
+    width: 100%;
     
 }
 .introduction img{
-    width: 1512px;
+    width: 100%;
     height: 600px;
     opacity: 0.2;
     border-radius: 10px;
