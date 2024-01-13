@@ -3,39 +3,43 @@
     .introduction{
         position: relative;
         text-align: center;
+        width: 100%;
     }
     .introduction img{
-        width: 600px;
+        width: 100%;
+        max-width: 600px;
         height: 600px;
         opacity: 0.2;
         border-radius: 10px;
+        overflow: hidden;
     }
     .introduction h1{
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        font-size: 1.6vw;
+        font-size: 3vw;
         font-family: 'Montserrat', sans-serif;
         color: #edf0f1;
         background: none;
     }
     .introduction p{
-        margin-top: 7.4vw;
+        margin-top: 15vw;
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        font-size: 1.6vw;
+        font-size: 3vw;
         font-family: 'Montserrat', sans-serif;
         color: #edf0f1;
         background: none;
     }
     .introduction button{
-        margin-top: 18vw;
-        width: 80px;
-        height: 80px;
+        margin-top: 35vw;
+        width: 50px;
+        height: 50px;
         font-weight: 500;
+        font-size: 3vw;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -77,13 +81,14 @@
         justify-content: center;
         align-items: center;
         margin-top: 0.7vw;
-        width: 700px;
+        width: 100%;
         height: 300px;
     }
     .card img{
         position: absolute;
         top: 200px;
-        width: 500px;
+        width: 100%;
+        max-width: 500px;
         margin-left: 40px;
         border-radius: 30px;
         border:#24252A;  
@@ -94,6 +99,7 @@
     .card__content{
         justify-content: center;
         border: 5px solid rgba(0, 136, 169, 1);
+        padding: 0;
         border-radius: 30px;
         font-size: 1.8vw;
         color: white;
@@ -124,9 +130,6 @@
         padding: 10px;
         border-radius: 10px;
     }
-    
-    
-    
     .card__content li{
         list-style-type: dot;
         background-color: #0088a9;
@@ -134,9 +137,10 @@
         font-weight: 500;
     }
     .reveal{
+        position: relative;
         margin-top: 5vh;
-        transform: translateY(200px);
-        transition: all 2s ease;
+        transform: translateY(400px);
+        transition: all 1s ease;
     }
     .reveal.active {
         transform: translateY(0px);
