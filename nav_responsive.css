@@ -32,3 +32,8 @@
         text-decoration: none;
     }
 }
+@media screen and (min-width:1515px) {
+    .navbar a.icon{
+        display: none;
+    }
+}
