@@ -6,9 +6,8 @@
 
 /* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the navbar (.icon) */
 @media screen and (max-width: 600px) {
-    /* .navbar li:not(:first-child) {display: none;} */
-    .navbar li{display:none;}
-    .navbar li {display: none;}
+    .navbar ul li{display:none;}
+    
     .navbar a.icon {
       float: right;
       display: block;
