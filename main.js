@@ -1,6 +1,6 @@
 function openPDF() {
     // Replace 'path/to/your/pdf/file.pdf' with the actual path to your PDF file
-    var pdfUrl = 'Duy_Khoa_Doan_resume.pdf';
+    var pdfUrl = 'Kevin_Doan_resume_April_2024.pdf';
     
     // Open the PDF in a new tab
     window.open(pdfUrl, '_blank');

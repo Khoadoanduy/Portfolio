@@ -36,41 +36,55 @@
     </header>
     <hr>
     <main>
+       <script src="slider.js"></script>
         <div class="slider">
-            <div class="card__container">
-                <div class="projects" id="first">
+            <div class="card__container" id="card-1">
+                <a href="https://github.com/Khoadoanduy/ratemytcu" class="projects" id="first">
                     <!-- Card 1 content -->
-                    <h1><a href="#">ClipSnap</a></h1>
-                    <img src="images/question mark.jpg" alt="">
+                    <h1>Rate My TCU Professor</h1>
+                    <img src="images/android-chrome-512x512.png" alt="">
                     <div class="card__content">
-                        <p>Coming Soon!</p>
-                        <p>A Chrome extension that remembers all copied contents and allows users to access them.</p>
+                        <h4>Chrome Extension, GraphQL, javascript</h4>
+                        <p>A Chrome extension that helps TCU students view Professors' ratings directly on classes.tcu.edu</p>
                     </div>
-                </div>
-                <!-- <div class="projects">
-                    
-                    <h1><a href="#">Another Card</a></h1>
-                    <img src="images/question mark.jpg" alt="">
-                    <div class="card__content">
-                        <p>Coming Soon!</p>
-                        <p>A Chrome extension that remembers all copied contents and allows users to access them.</p>
-                    </div>
-                </div> -->
-                <!-- <div class="projects">
-                    <h1><a href="#">Another Card</a></h1>
-                    <img src="images/question mark.jpg" alt="">
-                    <div class="card__content">
-                        <p>Coming Soon!</p>
-                        <p>A Chrome extension that remembers all copied contents and allows users to access them.</p>
-                    </div>
-                </div> -->
+                </a>
             </div>
-            <!-- Add more card containers here if you have multiple cards -->
+            <div class="card__container" id="card-2">
+                <a href="https://github.com/Khoadoanduy/Coinalert" class="projects" id="first">
+                    <!-- Card 2 content -->
+                    <h1>Coinalert</h1>
+                    <img src="images/coin.webp" alt="">
+                    <div class="card__content">
+                        <h4>React, Node.js, REST APIs, Express.js</h4>
+                        <p>A full-stack website with backend server using Express.js to dynamically retrieve cryptocurrency prices
+                            from the CoinMarketCap API, ensuring real-time updates</p>
+                    </div>
+                </a>
+            </div>
+            <div class="card__container" id="card-2">
+                <a href="https://github.com/Khoadoanduy/Coinalert" class="projects" id="first">
+                    <!-- Card 2 content -->
+                    <h1>Stock Chart</h1>
+                    <img src="images/stock_chart.png" alt="">
+                    <div class="card__content">
+                        <h4>React, Chart.js, AlphaAdvantage API </h4>
+                        <p>Deployed a stock chart component in React using Chart.js library</p>
+                    </div>
+                </a>
+            </div>
+        
+            
+        </div>
+        <div class="navigation-button">
+            <span class="dot active" onclick="changeSlide(0)"></span>
+            <span class="dot" onclick="changeSlide(1)"></span>
+            <span class="dot" onclick="changeSlide(2)"></span>
+            <!-- Add more dots here if you have multiple cards -->
         </div>
         
     </main>
 </body>
-<hr>
+<hr style="margin-top:20px">
 <footer class="footer">
     <div class="container">
         <div class="row">
