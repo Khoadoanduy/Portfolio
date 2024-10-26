@@ -46,7 +46,7 @@ export default function ContactForm() {
       <form
           onSubmit={handleSubmit}
           method="POST"
-          data-netlify="true"
+          // data-netlify="true"
           netlify-honeypot="bot-field"
           className="bg-white p-6 rounded-r-md w-full md:w-2/3 shadow-md"
       >
