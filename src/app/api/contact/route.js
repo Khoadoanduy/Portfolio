@@ -1,29 +1,34 @@
-import connectToDatabase from "/src/app/lib/mongodb";
-import Contact from "/src/app/models/Contact";
+import { MongoClient } from "mongodb";
+
+// Replace with your MongoDB connection string
+const uri = process.env.MONGODB_URI;
 
 export async function POST(req) {
+  const { firstName, lastName, email, message } = await req.json();
+
   try {
-    await connectToDatabase();
-    const { name, email, phone } = await req.json(); // Retrieve JSON data
+    const client = await MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+    const db = client.db("users");
+    const collection = db.collection("user");
 
-    if (!name || !email) {
-      return new Response(
-        JSON.stringify({ error: "Name and email are required." }),
-        { status: 400, headers: { "Content-Type": "application/json" } }
-      );
-    }
+    // Insert data into the specified MongoDB collection
+    await collection.insertOne({
+      name: `${firstName} ${lastName}`,
+      email,
+      message,
+      createdAt: new Date(),
+    });
 
-    const newContact = new Contact({ name, email, phone });
-    await newContact.save();
-
-    return new Response(
-      JSON.stringify({ message: "Contact saved successfully." }),
-      { status: 201, headers: { "Content-Type": "application/json" } }
-    );
+    client.close();
+    return new Response(JSON.stringify({ message: "Message sent successfully!" }), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
   } catch (error) {
-    return new Response(
-      JSON.stringify({ error: "Server error." }),
-      { status: 500, headers: { "Content-Type": "application/json" } }
-    );
+    console.error("Database Error:", error); // Log the exact error
+    return new Response(JSON.stringify({ error: "Failed to send message." }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" },
+    });
   }
 }
