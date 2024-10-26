@@ -45,9 +45,20 @@ export default function ContactForm() {
       {/* Form Section */}
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-6 rounded-r-md w-full md:w-2/3 shadow-md"
+        name="contact"
+        method="POST"
         data-netlify="true"
+        netlify-honeypot="bot-field"
+        className="bg-white p-6 rounded-r-md w-full md:w-2/3 shadow-md"
       >
+        {/* Hidden inputs for Netlify */}
+        <input type="hidden" name="form-name" value="contact" />
+        <p className="hidden">
+          <label>
+            Don’t fill this out if you're human: <input name="bot-field" />
+          </label>
+        </p>
+
         <h2 className="text-2xl font-semibold mb-6 text-center">Contact Kevin Doan</h2>
 
         {confirmationMessage && <p className="mb-4 text-center text-sm text-gray-700">{confirmationMessage}</p>}
