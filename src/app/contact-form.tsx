@@ -17,29 +17,25 @@ export default function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      if (res.ok) {
-        setMessage("Contact information submitted successfully!");
-        setFormData({ name: "", email: "", phone: "" });
-      } else {
-        setMessage("Failed to submit contact information.");
-      }
-    } catch (error) {
-      setMessage("An error occurred. Please try again later.");
-    } finally {
-      setTimeout(() => setMessage(""), 5000); // Clear message after 5 seconds
-    }
+    setMessage("Thank you! Your submission has been received.");
+    setFormData({ name: "", email: "", phone: "" });
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-md mx-auto p-6 bg-white shadow-md rounded-md">
+    <form
+      onSubmit={handleSubmit}
+      name="contact"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      className="max-w-md mx-auto p-6 bg-white shadow-md rounded-md"
+    >
+      <input type="hidden" name="form-name" value="contact" />
+      <p className="hidden">
+        <label>
+          Don’t fill this out if you're human: <input name="bot-field" />
+        </label>
+      </p>
       <h2 className="text-2xl font-semibold mb-6 text-center">Contact Kevin Doan</h2>
 
       {message && <p className="mb-4 text-center text-sm text-gray-700">{message}</p>}
@@ -55,7 +51,6 @@ export default function ContactForm() {
           value={formData.name}
           onChange={handleChange}
           required
-          aria-label="name"
           className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-indigo-500"
         />
       </div>
@@ -71,7 +66,6 @@ export default function ContactForm() {
           value={formData.email}
           onChange={handleChange}
           required
-          aria-label="email"
           className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-indigo-500"
         />
       </div>
@@ -86,7 +80,6 @@ export default function ContactForm() {
           name="phone"
           value={formData.phone}
           onChange={handleChange}
-          aria-label="phone"
           className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-indigo-500"
         />
       </div>

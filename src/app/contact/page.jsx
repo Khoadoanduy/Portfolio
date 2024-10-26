@@ -1,157 +1,110 @@
 "use client";
 
-import {
-  Typography,
-  Card,
-  CardBody,
-  Radio,
-  Input,
-  Textarea,
-  Button,
-  IconButton,
-} from "@material-tailwind/react";
-import { EnvelopeIcon, PhoneIcon, TicketIcon } from "@heroicons/react/24/solid";
+import { useState } from "react";
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    type: "Design",
+    message: "",
+  });
+  const [status, setStatus] = useState("");
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const { firstName, lastName, email, message } = formData;
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: `${firstName} ${lastName}`,
+          email,
+          phone: "",
+          message,
+        }),
+      });
+
+      if (response.ok) {
+        setStatus("Message sent successfully!");
+      } else {
+        const data = await response.json();
+        setStatus(data.error || "An error occurred. Please try again.");
+      }
+    } catch (error) {
+      setStatus("An error occurred. Please try again.");
+    }
+  };
+
   return (
     <section className="px-8 py-16">
       <div className="container mx-auto mb-20 text-center">
-        <Typography variant="h1" color="blue-gray" className="mb-4">
-          Contact Us
-        </Typography>
-        <Typography
-          variant="lead"
-          className="mx-auto w-full lg:w-5/12 !text-gray-500"
-        >
-          Ready to get started? Feel free to reach out through the contact form,
-          and let&apos;s embark on a journey of innovation and success.
-        </Typography>
+        <h1 className="text-4xl font-bold text-gray-800 mb-4">Contact Us</h1>
+        <p className="text-gray-500 mx-auto w-full lg:w-5/12">
+          Ready to get started? Feel free to reach out through the contact form, and let's embark on a journey of innovation and success.
+        </p>
       </div>
-      <div>
-        <Card shadow={true} className="container mx-auto border border-gray/50">
-          <CardBody className="grid grid-cols-1 lg:grid-cols-7 md:gap-10">
-            <div className="w-full col-span-3 rounded-lg h-full py-8 p-5 md:p-16 bg-gray-900">
-              <Typography variant="h4" color="white" className="mb-2">
-                Contact Information
-              </Typography>
-              <Typography
-                variant="lead"
-                className="mx-auto mb-8 text-base !text-gray-500"
-              >
-                Fill up the form and our Team will get back to you within 24
-                hours.
-              </Typography>
-              <div className="flex gap-5">
-                <PhoneIcon className="h-6 w-6 text-white" />
-                <Typography variant="h6" color="white" className="mb-2">
-                  +1(424) 535 3523
-                </Typography>
-              </div>
-              <div className="flex my-2 gap-5">
-                <EnvelopeIcon className="h-6 w-6 text-white" />
-                <Typography variant="h6" color="white" className="mb-2">
-                  hello@mail.com
-                </Typography>
-              </div>
-              <div className="flex mb-10 gap-5">
-                <TicketIcon className="h-6 w-6 text-white" />
-                <Typography variant="h6" color="white" className="mb-2">
-                  Open Support Ticket
-                </Typography>
-              </div>
-              <div className="flex items-center gap-5">
-                <IconButton variant="text" color="white">
-                  <i className="fa-brands fa-facebook text-lg" />
-                </IconButton>
-                <IconButton variant="text" color="white">
-                  <i className="fa-brands fa-instagram text-lg" />
-                </IconButton>
-                <IconButton variant="text" color="white">
-                  <i className="fa-brands fa-github text-lg" />
-                </IconButton>
-              </div>
-            </div>
-            <div className="w-full mt-8 md:mt-0 md:px-10 col-span-4 h-full p-5">
-              <form action="#">
-                <div className="mb-8 grid gap-4 lg:grid-cols-2">
-                  {/* @ts-ignore */}
-                  <Input
-                    color="gray"
-                    size="lg"
-                    variant="static"
-                    label="First Name"
-                    name="first-name"
-                    placeholder="eg. Lucas"
-                    containerProps={{
-                      className: "!min-w-full mb-3 md:mb-0",
-                    }}
-                  />
-                  {/* @ts-ignore */}
-                  <Input
-                    color="gray"
-                    size="lg"
-                    variant="static"
-                    label="Last Name"
-                    name="last-name"
-                    placeholder="eg. Jones"
-                    containerProps={{
-                      className: "!min-w-full",
-                    }}
-                  />
-                </div>
-                {/* @ts-ignore */}
-                <Input
-                  color="gray"
-                  size="lg"
-                  variant="static"
-                  label="Email"
-                  name="first-name"
-                  placeholder="eg. lucas@mail.com"
-                  containerProps={{
-                    className: "!min-w-full mb-8",
-                  }}
-                />
-                <Typography
-                  variant="lead"
-                  className="!text-blue-gray-500 text-sm mb-2"
-                >
-                  What are you interested in?
-                </Typography>
-                <div className="-ml-3 mb-14 ">
-                  {/* @ts-ignore */}
-                  <Radio
-                    color="gray"
-                    name="type"
-                    label="Design"
-                    defaultChecked
-                  />
-                  {/* @ts-ignore */}
-                  <Radio color="gray" name="type" label="Development" />
-                  {/* @ts-ignore */}
-                  <Radio color="gray" name="type" label="Support" />
-                  {/* @ts-ignore */}
-                  <Radio color="gray" name="type" label="Other" />
-                </div>
-                {/* @ts-ignore */}
-                <Textarea
-                  color="gray"
-                  size="lg"
-                  variant="static"
-                  label="Your Message"
-                  name="first-name"
-                  containerProps={{
-                    className: "!min-w-full mb-8",
-                  }}
-                />
-                <div className="w-full flex justify-end">
-                  <Button className="w-full md:w-fit" color="gray" size="md">
-                    Send message
-                  </Button>
-                </div>
-              </form>
-            </div>
-          </CardBody>
-        </Card>
+      <div className="container mx-auto border border-gray-300 p-8 rounded-lg shadow-lg">
+        <h2 className="text-2xl font-semibold text-gray-700 mb-4">Contact Information</h2>
+        <p className="text-gray-500 mb-8">Fill up the form and our team will get back to you within 24 hours.</p>
+
+        <form onSubmit={handleSubmit}>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+            <input
+              type="text"
+              name="firstName"
+              placeholder="First Name"
+              value={formData.firstName}
+              onChange={handleChange}
+              className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-500"
+              required
+            />
+            <input
+              type="text"
+              name="lastName"
+              placeholder="Last Name"
+              value={formData.lastName}
+              onChange={handleChange}
+              className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-500"
+              required
+            />
+          </div>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-500"
+            required
+          />
+          <textarea
+            name="message"
+            placeholder="Your Message"
+            value={formData.message}
+            onChange={handleChange}
+            className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-500"
+            rows="5"
+            required
+          ></textarea>
+          <button
+            type="submit"
+            className="w-full md:w-auto bg-gray-800 text-white px-6 py-2 rounded-lg font-semibold"
+          >
+            Send message
+          </button>
+          {status && <p className="mt-4 text-center text-gray-600">{status}</p>}
+        </form>
       </div>
     </section>
   );

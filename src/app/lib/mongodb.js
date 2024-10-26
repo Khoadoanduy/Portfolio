@@ -21,6 +21,7 @@ async function connectToDatabase() {
   if (!cached.promise) {
     cached.promise = mongoose
       .connect(MONGODB_URI, {
+        dbName: "users", // Specify the 'users' database here
         useNewUrlParser: true,
         useUnifiedTopology: true,
       })
