@@ -1,6 +1,6 @@
-
+.next
 .idea
 .vscode
 node_modules
 .env
-.next
+/next/

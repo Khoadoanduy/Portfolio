@@ -46,6 +46,7 @@ export default function ContactForm() {
       <form
         onSubmit={handleSubmit}
         className="bg-white p-6 rounded-r-md w-full md:w-2/3 shadow-md"
+        data-netlify="true"
       >
         <h2 className="text-2xl font-semibold mb-6 text-center">Contact Kevin Doan</h2>
 
