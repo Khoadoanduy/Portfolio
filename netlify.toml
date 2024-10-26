@@ -4,3 +4,4 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+  inputs = { enableFormsDetection = true }
