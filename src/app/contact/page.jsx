@@ -12,7 +12,7 @@ import {
 } from "@material-tailwind/react";
 import { EnvelopeIcon, PhoneIcon, TicketIcon } from "@heroicons/react/24/solid";
 
-export function ContactForm() {
+export default function Contact() {
   return (
     <section className="px-8 py-16">
       <div className="container mx-auto mb-20 text-center">
@@ -115,7 +115,7 @@ export function ContactForm() {
                   variant="lead"
                   className="!text-blue-gray-500 text-sm mb-2"
                 >
-                  What are you interested on?
+                  What are you interested in?
                 </Typography>
                 <div className="-ml-3 mb-14 ">
                   {/* @ts-ignore */}
@@ -156,5 +156,3 @@ export function ContactForm() {
     </section>
   );
 }
-
-export default ContactForm;

@@ -1,12 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import {
-  Navbar as MTNavbar,
-  Collapse,
-  IconButton,
-  Typography,
-} from "@material-tailwind/react";
-import {
   RectangleStackIcon,
   UserCircleIcon,
   XMarkIcon,
@@ -34,15 +28,12 @@ interface NavItemProps {
 function NavItem({ children, href }: NavItemProps) {
   return (
     <li>
-      <Link href={href || ""} passHref>
-        <Typography
-          as="a"
-          variant="paragraph"
-          color="gray"
-          className="flex items-center gap-2 font-medium text-gray-900"
+      <Link href={href || ""} passHref legacyBehavior>
+        <p
+          className="flex items-center gap-2 font-medium text-gray-900 cursor-pointer transition-colors duration-300 hover:bg-black hover:text-white px-3 py-2 rounded-md"
         >
           {children}
-        </Typography>
+        </p>
       </Link>
     </li>
   );
@@ -54,18 +45,17 @@ export function Navbar() {
   const handleOpen = () => setOpen((cur) => !cur);
 
   React.useEffect(() => {
-    window.addEventListener(
-      "resize",
-      () => window.innerWidth >= 960 && setOpen(false)
-    );
+    const handleResize = () => {
+      if (window.innerWidth >= 960) setOpen(false);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
-    <MTNavbar shadow={false} fullWidth className="border-0 sticky top-0 z-50">
-      <div className="container mx-auto flex items-center justify-between">
-        <Typography color="blue-gray" className="text-lg font-bold">
-          Kevin Doan
-        </Typography>
+    <nav className="border-0 sticky top-0 z-50 bg-white w-full shadow-md">
+      <div className="container mx-auto flex items-center justify-between py-4">
+        <h1 className="text-lg font-bold text-blue-gray-900">Kevin Doan</h1>
         <ul className="ml-10 hidden items-center gap-8 lg:flex">
           {NAV_MENU.map(({ name, icon: Icon, href }) => (
             <NavItem key={name} href={href}>
@@ -74,21 +64,19 @@ export function Navbar() {
             </NavItem>
           ))}
         </ul>
-        <IconButton
-          variant="text"
-          color="gray"
+        <button
           onClick={handleOpen}
-          className="ml-auto inline-block lg:hidden"
+          className="ml-auto inline-block lg:hidden text-gray-900 focus:outline-none"
         >
           {open ? (
             <XMarkIcon strokeWidth={2} className="h-6 w-6" />
           ) : (
             <Bars3Icon strokeWidth={2} className="h-6 w-6" />
           )}
-        </IconButton>
+        </button>
       </div>
-      <Collapse open={open}>
-        <div className="container mx-auto mt-3 border-t border-gray-200 px-2 pt-4">
+      {open && (
+        <div className="container mx-auto mt-3 border-t border-gray-200 px-2 pt-4 lg:hidden">
           <ul className="flex flex-col gap-4">
             {NAV_MENU.map(({ name, icon: Icon, href }) => (
               <NavItem key={name} href={href}>
@@ -98,8 +86,8 @@ export function Navbar() {
             ))}
           </ul>
         </div>
-      </Collapse>
-    </MTNavbar>
+      )}
+    </nav>
   );
 }
 

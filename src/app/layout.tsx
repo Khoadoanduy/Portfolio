@@ -2,7 +2,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
-import { Layout, FixedPlugin } from "@/components";
+import { Layout} from "./components";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -11,9 +11,8 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "Next.js + Tailwind Portfolio Page",
-  description:
-    "Introducing Tailwind Portfolio Page, a versatile and stylish portfolio template built on the foundation of Tailwind CSS and Material Tailwind.",
+  title: "Kevin Doan's portfolio",
+  description: "Kevin's in the game",
 };
 
 export default function RootLayout({
@@ -34,7 +33,7 @@ export default function RootLayout({
       <body className={roboto.className}>
         <Layout>
           {children}
-          <FixedPlugin />
+          
         </Layout>
       </body>
     </html>

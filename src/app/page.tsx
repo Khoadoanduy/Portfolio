@@ -1,5 +1,5 @@
 // components
-import { Navbar, Footer } from "@/components";
+import { Navbar} from "./components";
 
 // sections
 import Hero from "./hero";
@@ -18,9 +18,7 @@ export default function Portfolio() {
       <Skills />
       <Projects />
       <Resume />
-      
       <ContactForm />
-      <Footer />
     </>
   );
 }

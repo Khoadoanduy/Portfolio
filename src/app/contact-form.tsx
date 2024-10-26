@@ -1,5 +1,4 @@
-"use client"
-
+"use client";
 import React, { useState } from "react";
 
 export default function ContactForm() {
@@ -11,12 +10,12 @@ export default function ContactForm() {
 
   const [message, setMessage] = useState("");
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
@@ -34,6 +33,8 @@ export default function ContactForm() {
       }
     } catch (error) {
       setMessage("An error occurred. Please try again later.");
+    } finally {
+      setTimeout(() => setMessage(""), 5000); // Clear message after 5 seconds
     }
   };
 
@@ -54,6 +55,7 @@ export default function ContactForm() {
           value={formData.name}
           onChange={handleChange}
           required
+          aria-label="name"
           className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-indigo-500"
         />
       </div>
@@ -69,6 +71,7 @@ export default function ContactForm() {
           value={formData.email}
           onChange={handleChange}
           required
+          aria-label="email"
           className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-indigo-500"
         />
       </div>
@@ -83,6 +86,7 @@ export default function ContactForm() {
           name="phone"
           value={formData.phone}
           onChange={handleChange}
+          aria-label="phone"
           className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-indigo-500"
         />
       </div>
